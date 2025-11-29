@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 # List of keywords to search
 keywords = ['keyword1', 'keyword2', 'keyword3']
 
-# List of URLs to check
+# List of news websites URLs to check
 urls = [
     'https://isc.sans.edu/',
     'https://www.troyhunt.com/',
@@ -17,14 +17,13 @@ urls = [
     'https://thehackernews.com/',
     'https://portswigger.net/daily-swig',
     'https://www.ibm.com/security/data-breach/threat-intelligence',
-    # 'https://redcanary.com/threat-detection-report/', # failing to fetch
     'https://threatpost.com/',
     'https://www.cyberscoop.com/',
     'https://thisweekin4n6.com/',
     'https://googleprojectzero.blogspot.com/'
 ]
 
-# Fetch the news titles from the url
+# Gather the news titles from the urls
 def fetch_urls(url):
   
     response = requests.get(url)
@@ -50,7 +49,7 @@ def check_for_keywords(titles, keywords):
         for keyword in keywords:
             if keyword.lower() in title.lower():
                 matching_titles.append(title)
-                break  # No need to check other keywords if one is found
+                break 
     
     return matching_titles
 
@@ -72,8 +71,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-# Check if working properly in all sites, particularly due to assumption of news titles as 'h2' 'home-title'
